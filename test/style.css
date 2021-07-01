@@ -6,4 +6,6 @@
 
 .b { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-overflow: ellipsis; width: 100px; height: 66px; }
 
+.tss { width: 100px; }
+
 /*# sourceMappingURL=style.css.map */
