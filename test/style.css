@@ -1,0 +1,9 @@
+.a { border: 1px solid red; background-color: #852525; }
+.a:after { content: ""; display: block; clear: both; }
+.a > div { float: left; }
+
+.bb { overflow: hidden; display: block; text-overflow: ellipsis; white-space: nowrap; width: 100px; }
+
+.b { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; text-overflow: ellipsis; width: 100px; height: 66px; }
+
+/*# sourceMappingURL=style.css.map */

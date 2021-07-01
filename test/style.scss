@@ -1,0 +1,32 @@
+@mixin clear{
+    &:after{content:""; display:block; clear:both; }
+}
+.a{border:1px solid red; background-color: rgb(133, 37, 37);
+    @include clear;
+    > div{float:left;}
+}
+
+@mixin ellispsis($w){
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:$w;
+}
+@mixin ellispsis2($line, $w, $h){
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    width:$w;
+    height:$h;
+}
+
+.bb{
+    @include ellispsis(100px);
+}
+.b{
+    @include ellispsis2(3,100px ,66px );
+}
+
