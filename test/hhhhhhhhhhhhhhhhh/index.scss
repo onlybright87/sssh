@@ -1,0 +1,132 @@
+
+$color:#999;
+$color2:#ff0000;
+$ft11:11px;
+
+
+@mixin test{
+    width:100px; height:100px; border:1px solid red;
+}
+@mixin clear {
+    &:after{ 
+        content:"";
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin border($color) {
+    border:1px solid $color;
+}
+
+div{border:3px solid blue; @include clear;}
+p{float:left; @include test();}
+
+div.a1{
+    @include border(green);
+}
+p{
+    @include border(pink);
+}
+span{@include border(#ff0000);
+}
+
+@mixin box($w, $h) {
+    width:$w;
+    height:$h;
+}
+div.a2{
+    @include box(300px, 400px); border:1px solid red;
+}
+
+ul{
+    border:1px solid red;
+    > li{
+        background-color: pink;
+        a{
+            text-decoration: none;
+            color:red;
+            &:hover{
+                color:blue;
+            }
+        }
+    &:list-child{
+        color:yellow;
+       }
+    }
+}
+
+@mixin bx($position,$wid, $color){
+    border-#{$position}:$wid solid $color;
+}
+
+.borderfn{
+    @include bx(top, 5px, red)
+}
+
+.forex{
+    .list{
+        li{
+            background: no-repeat 0 0 / 100px  auto;
+             text-indent:100px;
+        }
+    }
+}
+
+@for $i from 1 to 5{
+    .list li.icon#{$i}{background-image: url(image/awards_slide#{$i}.jpg);}
+}
+
+@each $var in book, zoom, phone{
+    .icon_#{($var)}{
+        background: url(image/#{$var}.png) no-repeat;
+    }
+}
+
+$heading : (
+    h1:30px,
+    h2:20px,
+    h3:15px
+);
+
+@each $ele, $fs in $heading{
+    #{$ele}{
+        font-size:$fs;
+    }
+}
+
+@mixin btn_radius($h, $pd, $radius:true){
+    background-color: black;
+    padding:0 20px; 
+    height:$h;
+    line-height:$h;
+    text-align:center;
+    @if $radius{
+        border-radius:$h / 2;
+    }@else{
+        border:1px solid red;
+    }
+}
+.btn{@include btn_radius(30px, true);}
+
+
+@mixin position($x, $y, $z) {
+    position: absolute;
+    left:$x;
+    top:$y;
+    z-index:$z;
+    @if $x==50% and $y ==50% {
+        transform:translate(-50%, -50%);
+    }@else if $x==50%{
+        transform: translateX(-50%);
+    }@else if $y==50%{
+        transform: translateY(-50%);
+    }
+}
+.test12{
+    width:300px;
+    height:300px;
+    background: #000; 
+    @include position(50%, 50% , 2);
+}
+
